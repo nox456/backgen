@@ -1,0 +1,20 @@
+{
+    "name": "backgen",
+    "version": "1.0.0",
+    "description": "a cli to build backend apps structure",
+    "main": "src/index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Nox",
+    "license": "ISC",
+    "bin": {
+        "backgen": "./src/index.js"
+    },
+    "dependencies": {
+        "chalk": "^5.3.0",
+        "inquirer": "^9.2.11",
+        "zx": "^7.2.3"
+    }
+}
