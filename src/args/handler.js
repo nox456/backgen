@@ -1,11 +1,10 @@
-import INFO_ARGS from "./constants/INFO.js"
+import INFO_ARGS from "./constants/INFO.js";
+import COMMANDS_ARGS from "./constants/COMMANDS.js"
 
-export default function handlerArgs() {
-    const args = process.argv;
+export function handlerInfoArgs(arg) {
+    console.log(INFO_ARGS[arg])
+}
 
-    args.splice(0, 2);
-
-    args.forEach((arg) => {
-        console.log(INFO_ARGS[arg]);
-    });
+export function handlerCommandArgs(arg) {
+    COMMANDS_ARGS[arg]()
 }
