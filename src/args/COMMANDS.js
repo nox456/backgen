@@ -1,7 +1,7 @@
 import chalk from "chalk";
-import exec from "../../lib/exec.js";
-import createProject from "../../lib/createProject.js";
-import { style1, style2 } from "../../prompts/styles.js";
+import exec from "../lib/exec.js";
+import createProject from "../lib/createProject.js";
+import { style1, style2 } from "../lib/styles.js";
 import inquirer from "inquirer";
 
 export default {

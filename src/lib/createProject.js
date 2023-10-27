@@ -1,7 +1,7 @@
 import exec from "./exec.js";
 import fs from "node:fs/promises";
 import process from "node:process";
-import { style2, style1 } from "../prompts/styles.js";
+import { style2, style1 } from "./styles.js";
 import {
     CONTENT_NO_DEPENDENCIES,
     CONTENT_WITH_DEPENDENCIES,
