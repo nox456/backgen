@@ -18,11 +18,17 @@ export default {
                 type: "list",
                 choices: ["No Framework", "Express.js"],
             },
+            {
+                name: "srcDir",
+                message: "Create src/ Directory?",
+                type: "confirm",
+                default: true
+            }
         ]);
-        const { projectName, framework } = answers;
+        const { projectName, framework, srcDir } = answers;
         const dependencies = {
             framework: framework == "No Framework" ? false : framework,
         };
-        await createProject({ projectName, dependencies });
+        await createProject({ projectName, dependencies, srcDir });
     },
 };
