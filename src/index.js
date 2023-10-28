@@ -1,17 +1,21 @@
 #! /usr/bin/env node
 
-import handlerArgs from "./args/handler.js"
-import inquirer from "inquirer"
-import createProject from "./lib/createProject.js"
+import createProject from "./lib/createProject.js";
+import process from "node:process";
 
-handlerArgs()
+// ARGUMENTS
+import INFO_ARGS from "./args/INFO.js";
+import COMMANDS_ARGS from "./args/COMMANDS.js";
 
-const answers = await inquirer.prompt([{
-    name: "projectName",
-    message: "Enter Project Name:",
-    default: "project"
-}])
+const args = process.argv;
 
-const { projectName } = answers
+const arg = {
+    value: args[2],
+    isFlag: args[2].startsWith("-"),
+};
 
-await createProject(projectName)
+if (arg.isFlag) {
+    console.log(INFO_ARGS[arg.value]);
+} else {
+    COMMANDS_ARGS[arg.value]();
+}
