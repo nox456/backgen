@@ -15,6 +15,7 @@
     "dependencies": {
         "chalk": "^5.3.0",
         "inquirer": "^9.2.11",
+        "spinnies": "^0.5.1",
         "zx": "^7.2.3"
     }
 }
