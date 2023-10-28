@@ -6,13 +6,27 @@ import {
     CONTENT_NO_DEPENDENCIES,
     CONTENT_WITH_DEPENDENCIES,
 } from "../templates/packageJSON.js";
+import Spinnies from "spinnies";
 
-export default async function createProject({ projectName, dependencies, srcDir }) {
+const loader = new Spinnies({
+    color: "blueBright",
+    succeedColor: "greenBright",
+    spinner: {
+        interval: 80,
+        frames: ["-", "_"],
+    },
+});
+
+export default async function createProject({
+    projectName,
+    dependencies,
+    srcDir,
+}) {
     try {
         await exec(`mkdir ${projectName}/`);
         await exec(`cd ${projectName} && touch package.json`);
         if (srcDir) {
-            await exec(`cd ${projectName} && mkdir src/`)
+            await exec(`cd ${projectName} && mkdir src/`);
         }
         if (Object.values(dependencies).every((dep) => dep == false)) {
             await fs.writeFile(
@@ -25,10 +39,11 @@ export default async function createProject({ projectName, dependencies, srcDir 
                 CONTENT_WITH_DEPENDENCIES(projectName, dependencies)
             );
         }
+        loader.add("spinner-1", { text: "Creating Project..." });
     } catch (err) {
         console.error(err);
     }
-    console.log(
-        style1(`Project '${style2(projectName)}' created sucessfully!`)
-    );
+    loader.succeed("spinner-1", {
+        text: `Project '${style2(projectName)}' created sucessfully!`,
+    });
 }
