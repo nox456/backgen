@@ -1,21 +1,18 @@
-export const CONTENT_NO_DEPENDENCIES = (projectName) => {
-    return `{
-  "name": "${projectName}",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
-`;
-};
-
-export const CONTENT_WITH_DEPENDENCIES = (projectName, dependencies) => {
+const writeJSON = (projectName, dependencies) => {
     const frmwkPackages = {
         "Express.js": `"express": "^4.18.2"`,
     };
+    let template = ""
+    const dependenciesValues = Object.values(dependencies)
+    dependenciesValues.forEach((dependencie,index) => {
+        if (dependencie != false) {
+            if (index == dependenciesValues.length - 1 && dependenciesValues.length > 1) {
+                template = `${template}${frmwkPackages[dependencie]},`
+            } else {
+                template = `${template}${frmwkPackages[dependencie]}`
+            }
+        }
+    })
     return `{
   "name": "${projectName}",
   "version": "1.0.0",
@@ -25,9 +22,9 @@ export const CONTENT_WITH_DEPENDENCIES = (projectName, dependencies) => {
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    ${frmwkPackages[dependencies.framework]},
-  },
+  "dependencies": {${template}}
 }
 `;
 };
+
+export default writeJSON
