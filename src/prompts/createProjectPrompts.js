@@ -17,3 +17,10 @@ export const SRCDIR = {
     type: "confirm",
     default: true,
 };
+
+export const MVC = {
+    name: "mvc",
+    message: "Use MVC architecture?",
+    type: "confirm",
+    default: false
+}
