@@ -1,18 +1,22 @@
 const writeJSON = (projectName, dependencies) => {
-    const frmwkPackages = {
-        "Express.js": `"express": "^4.18.2"`,
+    const packages = {
+        "Express.js": '"express": "^4.18.2"',
+        Morgan: '"morgan": "^1.10.0"',
     };
-    let template = ""
-    const dependenciesValues = Object.values(dependencies)
-    dependenciesValues.forEach((dependencie,index) => {
-        if (dependencie != false) {
-            if (index == dependenciesValues.length - 1 && dependenciesValues.length > 1) {
-                template = `${template}${frmwkPackages[dependencie]},`
+    let template = "";
+    const dependenciesValues = Object.values(dependencies).filter(d => d != false);
+    console.log(dependenciesValues)
+    dependenciesValues.forEach((dependencie, index) => {
+        if (dependenciesValues.length > 1) {
+            if (index == dependenciesValues.length - 1) {
+                template = `${template}${packages[dependencie]}`;
             } else {
-                template = `${template}${frmwkPackages[dependencie]}`
+                template = `${template}${packages[dependencie]},`;
             }
+        } else {
+            template = `${template}${packages[dependencie]}`;
         }
-    })
+    });
     return `{
   "name": "${projectName}",
   "version": "1.0.0",
@@ -27,4 +31,4 @@ const writeJSON = (projectName, dependencies) => {
 `;
 };
 
-export default writeJSON
+export default writeJSON;

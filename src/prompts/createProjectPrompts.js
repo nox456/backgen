@@ -24,3 +24,10 @@ export const MVC = {
     type: "confirm",
     default: false
 }
+
+export const LOGGER = {
+    name: "logger",
+    message: "Choose a Logger:",
+    type: "list",
+    choices: ["No Logger", "Morgan"]
+}
