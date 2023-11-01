@@ -19,6 +19,7 @@ export default async function createProject({
     dependencies,
     srcDir,
     mvc,
+    scripts
 }) {
     loader.add("spinner-1", { text: "Creating Project..." });
     try {
@@ -32,7 +33,7 @@ export default async function createProject({
         }
         await fs.writeFile(
             `${process.cwd()}/${projectName}/package.json`,
-            writeJSON(projectName, dependencies)
+            writeJSON(projectName, dependencies, scripts, srcDir)
         );
     } catch (err) {
         console.error(err);

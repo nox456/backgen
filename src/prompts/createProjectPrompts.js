@@ -31,3 +31,10 @@ export const LOGGER = {
     type: "list",
     choices: ["No Logger", "Morgan"]
 }
+
+export const DEV = {
+    name: "dev",
+    message: "Create basic 'dev' script in 'package.json'?",
+    type: "confirm",
+    default: false
+}
