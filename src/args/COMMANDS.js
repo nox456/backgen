@@ -7,7 +7,8 @@ import {
     FRAMEWORK,
     PROJECT_NAME,
     SRCDIR,
-    MVC
+    MVC,
+    LOGGER
 } from "../prompts/createProjectPrompts.js";
 
 export default {
@@ -16,11 +17,13 @@ export default {
             PROJECT_NAME,
             FRAMEWORK,
             SRCDIR,
-            MVC
+            MVC,
+            LOGGER
         ]);
-        const { projectName, framework, srcDir, mvc } = answers;
+        const { projectName, framework, srcDir, mvc, logger } = answers;
         const dependencies = {
             framework: framework == "No Framework" ? false : framework,
+            logger: logger == "No Logger" ? false : logger
         };
         await createProject({ projectName, dependencies, srcDir, mvc });
     },
