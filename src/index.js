@@ -17,5 +17,5 @@ const arg = {
 if (arg.isFlag) {
     console.log(INFO_ARGS[arg.value]);
 } else {
-    COMMANDS_ARGS[arg.value]();
+    COMMANDS_ARGS[arg.value].execute();
 }

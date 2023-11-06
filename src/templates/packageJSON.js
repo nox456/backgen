@@ -4,6 +4,7 @@ const writeJSON = (projectName, dependencies, scripts, srcDir) => {
     const packages = {
         "Express.js": '"express": "^4.18.2"',
         Morgan: '"morgan": "^1.10.0"',
+        "PostgreSQL": '"pg": "^8.11.3"'
     };
     const dependenciesValues = Object.values(dependencies).filter(
         (d) => d != false

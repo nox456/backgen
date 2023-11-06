@@ -38,3 +38,17 @@ export const DEV = {
     type: "confirm",
     default: false
 }
+
+export const DB = {
+    name: "db",
+    message: "Choose a Database:",
+    type: "list",
+    choices: ["No database", "PostgreSQL"]
+}
+
+export const INDEX = {
+    name: "index",
+    message: "Create a 'index.js' main file?",
+    type: "confirm",
+    default: false
+}
