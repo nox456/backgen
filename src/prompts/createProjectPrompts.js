@@ -38,3 +38,10 @@ export const DEV = {
     type: "confirm",
     default: false
 }
+
+export const DB = {
+    name: "db",
+    message: "Choose a Database:",
+    type: "list",
+    choices: ["No database", "PostgreSQL"]
+}
