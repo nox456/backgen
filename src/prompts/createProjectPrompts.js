@@ -45,3 +45,10 @@ export const DB = {
     type: "list",
     choices: ["No database", "PostgreSQL"]
 }
+
+export const INDEX = {
+    name: "index",
+    message: "Create a 'index.js' main file?",
+    type: "confirm",
+    default: false
+}

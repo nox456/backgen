@@ -10,7 +10,8 @@ import {
     MVC,
     LOGGER,
     DEV,
-    DB
+    DB,
+    INDEX
 } from "../prompts/createProjectPrompts.js";
 
 export default {
@@ -22,9 +23,10 @@ export default {
             MVC,
             LOGGER,
             DEV,
-            DB
+            DB,
+            INDEX
         ]);
-        const { projectName, framework, srcDir, mvc, logger, dev, db } = answers;
+        const { projectName, framework, srcDir, mvc, logger, dev, db, index } = answers;
         const dependencies = {
             framework: framework == "No Framework" ? false : framework,
             logger: logger == "No Logger" ? false : logger,
@@ -33,6 +35,6 @@ export default {
         const scripts = {
             dev
         }
-        await createProject({ projectName, dependencies, srcDir, mvc, scripts });
+        await createProject({ projectName, dependencies, srcDir, mvc, scripts, index });
     },
 };
