@@ -10,6 +10,7 @@ import {
     MVC,
     LOGGER,
     DEV,
+    DB
 } from "../prompts/createProjectPrompts.js";
 
 export default {
@@ -21,11 +22,13 @@ export default {
             MVC,
             LOGGER,
             DEV,
+            DB
         ]);
-        const { projectName, framework, srcDir, mvc, logger, dev } = answers;
+        const { projectName, framework, srcDir, mvc, logger, dev, db } = answers;
         const dependencies = {
             framework: framework == "No Framework" ? false : framework,
             logger: logger == "No Logger" ? false : logger,
+            db: db == "No database" ? false : db
         };
         const scripts = {
             dev
