@@ -19,7 +19,8 @@ export default async function createProject({
     dependencies,
     srcDir,
     mvc,
-    scripts
+    scripts,
+    index
 }) {
     loader.add("spinner-1", { text: "Creating Project..." });
     try {
@@ -30,6 +31,12 @@ export default async function createProject({
         }
         if (mvc) {
             await exec(`mkdir ${projectName}/${srcDir ? "src/" : ""}controllers ${projectName}/${srcDir ? "src/" : ""}models ${projectName}/${srcDir ? "src/" : ""}routes ${projectName}/${srcDir ? "src/" : ""}lib ${projectName}/${srcDir ? "src/" : ""}public`);
+        }
+        if (index) {
+            await exec(`touch ${projectName}/${srcDir ? "src/": ""}index.js`)
+        }
+        if (dependencies.db) {
+            await exec(`mkdir ${projectName}/${srcDir ? "src/": ""}db/`)
         }
         await fs.writeFile(
             `${process.cwd()}/${projectName}/package.json`,
